@@ -1,0 +1,332 @@
+/* ============================================
+   Importação de fonte externa
+============================================ */
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+/* ============================================
+   Reset e box-sizing global
+============================================ */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Estilos básicos para html e body
+============================================ */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   Background animado no elemento html
+============================================ */
+html {
+  width: 100%;
+  background-color: hsla(200, 40%, 30%, .4);
+
+  /* Múltiplos planos de fundo com imagens sobrepostas */
+  background-image:   
+    url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+    url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
+    url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+    url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+    url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+
+  background-repeat: repeat-x; /* repetir horizontalmente */
+  background-position: 
+    0 20%,
+    0 100%,
+    0 50%,
+    0 100%,
+    0 0;
+
+  background-size: 
+    2500px,
+    800px,
+    500px 200px,
+    1000px,
+    400px 260px;
+
+  /* Animação contínua dos fundos para criar efeito parallax */
+  animation: para 50s linear infinite;
+}
+
+/* Animação da posição do background para movimento horizontal */
+@keyframes para {
+  100% {
+    background-position: 
+      -5000px 20%,
+      -800px 95%,
+      500px 50%,
+      1000px 100%,
+      400px 0;
+  }
+}
+
+/* ============================================
+   Estilo do body e camadas principais
+============================================ */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Euclid Circular A", sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+/* Camada semi-transparente sobre o fundo (overlay escuro) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0; /* fica atrás do conteúdo */
+}
+
+/* ============================================
+   Container principal do cartão de login
+============================================ */
+.login-card {
+  position: relative;
+  z-index: 1; /* acima do overlay */
+  width: 320px;
+  padding: 20px 30px 20px;
+  border-radius: 1.25rem;
+  background: rgba(0, 0, 0, 0.21);
+  backdrop-filter: blur(26px); /* efeito blur no fundo */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Título principal do cartão */
+.login-card > h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: #f9f9f9;
+}
+
+/* Subtítulo do cartão */
+.login-card > h3 {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 40px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ============================================
+   Formulário de login e inputs
+============================================ */
+.login-form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+}
+
+/* Placeholder dos inputs */
+.login-form input.control::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Estilo geral dos inputs e botões */
+.control {
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f9f9f9;
+  margin: 8px 0;
+  font-family: inherit;
+  font-size: 16px;
+  transition: 0.4s;
+}
+
+/* Estilo específico do botão do formulário */
+.login-form > button.control {
+  cursor: pointer;
+  background: #3a75dc;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.375s ease;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(58, 117, 220, 0.4);
+  user-select: none;
+}
+
+/* Efeito hover no botão */
+.login-form > button.control:hover {
+  background: rgb(42, 185, 49); /* tom mais escuro do azul */
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.6);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Efeito ativo (click) no botão */
+.login-form > button.control:active {
+  background: #244d9b;
+  box-shadow: 0 2px 6px rgba(36, 77, 155, 0.8);
+  transform: translateY(0);
+}
+
+/* ============================================
+   Estilo geral para todos os botões (não só do formulário)
+============================================ */
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ============================================
+   Classe auxiliar para username (input wrapper)
+============================================ */
+.username {
+  position: relative;
+}
+
+/* Indicador de força da senha e outros indicadores */
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Barra do indicador de força */
+#bars {
+  margin: 8px 0;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Barra individual */
+#bars div {
+  height: 6px;
+  border-radius: 3px;
+  transition: 0.4s;
+  width: 0%;
+}
+
+/* Força fraca */
+#bars.weak div {
+  background: #d0424f;
+  width: 33.33%;
+}
+
+/* Força média */
+#bars.medium div {
+  background: #e58448;
+  width: 66.66%;
+}
+
+/* Força forte */
+#bars.strong div {
+  background: #1eb965;
+  width: 100%;
+}
+
+/* Texto indicador de força */
+.forte {
+  text-align: left;
+  height: 30px;
+  text-transform: capitalize;
+}
+
+/* ============================================
+   Classes para erros e validação
+============================================ */
+.control.error {
+  border: 2px solid #d0424f;
+}
+
+/* Wrapper para inputs com tooltip, posiciona tooltip relativo a este */
+.input-wrapper {
+  position: relative; /* importante para tooltip */
+  margin-bottom: 20px;
+}
+
+/* Tooltip para mensagens de erro */
+.tooltip {
+  display: none;
+  position: absolute;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  margin-left: 45px;
+  background-color: #d0424f;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* ============================================
+   Animação de "shake" para erro (movimento horizontal)
+============================================ */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Classe que ativa a animação shake */
+.shake {
+  animation: shake 0.5s;
+}
+
+/* Classe para borda de erro (usada para forçar borda vermelha) */
+.erro {
+  border: 2px solid red !important;
+}
+
+/* Tooltip secundário para erro */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  transform: translateY(-100%);
+  z-index: 10;
+}
+
+/* ============================================
+   Animação de entrada - slide da esquerda para direita
+============================================ */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classe para ativar animação slideInLeft */
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}

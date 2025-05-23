@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link para o arquivo CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <section class="login">
+    <div class="login-card">
+      <h2>Login</h2>
+      <h3>Entre com seu cadastro</h3>
+
+      <!-- Formulário de login -->
+      <form class="login-form" id="login-form">
+
+        <!-- Campo de email com tooltip para erro -->
+        <div class="input-wrapper" style="position: relative;">
+          <input
+            autocomplete="off"
+            spellcheck="false"
+            class="control"
+            type="email"
+            id="usuario"
+            placeholder="Seu e-mail..."
+          />
+          <span class="tooltip">Preencha com seus dados</span> <!-- Mensagem de erro -->
+        </div>
+
+        <!-- Campo de senha -->
+        <div class="input-wrapper" style="position: relative;">
+          <input
+            spellcheck="false"
+            class="control"
+            id="senha"
+            type="password"
+            placeholder="Sua senha"
+            oninput="handleChange()" 
+          />
+        </div>
+
+        <!-- Barra visual da força da senha -->
+        <div id="bars"><div></div></div>
+        <div class="forte" id="forte"></div> <!-- Texto de força da senha -->
+
+        <!-- Botão de envio do formulário -->
+        <button class="control" type="submit">Continue</button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- Link para o arquivo JavaScript -->
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
